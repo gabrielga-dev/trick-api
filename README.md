@@ -25,3 +25,6 @@ Or just create the .jar file and run it:
 To use the APIs, you can access the Swagger documentation available at:
 
 > http://localhost:8080/swagger-ui/index.html
+
+## Running with kubernetes
+**🚧🚧🚧 Currently under construction... 🚧🚧🚧**
