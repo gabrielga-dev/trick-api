@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: atividade_devops_2
+  datasource:
+    url: ${DATABSE_URL:jdbc:postgresql://localhost:5432/trick_database}
+    username: ${DATABSE_USER:user}
+    password: ${DATABSE_PASSWORD:user}
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
