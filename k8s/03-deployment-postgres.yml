@@ -3,10 +3,10 @@ kind: Deployment
 metadata:
   name: postgres-deployment
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: postgres
-  replicas: 1
   template:
     metadata:
       labels:
@@ -19,14 +19,23 @@ spec:
             - containerPort: 5432
           env:
             - name: POSTGRES_DB
-              value: trick_database
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-config
+                  key: dbName
             - name: POSTGRES_USER
-              value: user
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: dbUser
             - name: POSTGRES_PASSWORD
-              value: user
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: dbPassword
           volumeMounts:
-            - name: postgres-storage
+            - name: postgres-data
               mountPath: /var/lib/postgresql/data
       volumes:
-        - name: postgres-storage
+        - name: postgres-data
           emptyDir: {}
