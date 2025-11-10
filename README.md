@@ -27,4 +27,20 @@ To use the APIs, you can access the Swagger documentation available at:
 > http://localhost:8080/swagger-ui/index.html
 
 ## Running with kubernetes
-**🚧🚧🚧 Currently under construction... 🚧🚧🚧**
+To run with kubernetes locally you will need [kind](https://kind.sigs.k8s.io/) installed.
+
+Once with kind installed follow the following steps:
+
+### Go to k8s directory
+> cd ./k8s
+
+### Run the deploy script
+> ./deploy.sh
+
+You can see all pods by running
+> kubernetes get pods
+
+If you want to stop the project, you can run:
+> ./reset.sh
+
+(This script will stop and delete all trick-api pods, deployments, services and configs)
