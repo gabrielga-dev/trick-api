@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: gabrielguimaraesdvlpr/trick-api:v2.0
+          image: gabrielguimaraesdvlpr/tricks-api:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -47,15 +47,3 @@ spec:
                 secretKeyRef:
                   name: backend-secret
                   key: dbPassword
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8080
-            initialDelaySeconds: 10
-            periodSeconds: 5
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8080
-            initialDelaySeconds: 30
-            periodSeconds: 10
